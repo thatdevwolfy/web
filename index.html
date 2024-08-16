@@ -2,10 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=https://client.xeh.sh/giftcoins?id=1210341026808725605&coins=100">
     <title>Redirecting...</title>
+    <script>
+        window.onload = function() {
+            // Get the current URL's query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // Get the 'coins' parameter, default to 100 if not provided
+            const coins = urlParams.get('coins') || '100';
+
+            // Construct the redirect URL
+            const redirectUrl = `https://client.xeh.sh/giftcoins?id=1210341026808725605&coins=${coins}`;
+
+            // Redirect to the constructed URL
+            window.location.href = redirectUrl;
+        };
+    </script>
 </head>
 <body>
-    <p>If you are not redirected automatically, follow this <a href="https://client.xeh.sh/giftcoins?id=1210341026808725605&coins=100">link</a>.</p>
+    <p>If you are not redirected automatically, follow this <a id="redirect-link" href="#">link</a>.</p>
+
+    <script>
+        // Set the fallback link href after page loads
+        document.getElementById('redirect-link').href = `https://client.xeh.sh/giftcoins?id=1210341026808725605&coins=${new URLSearchParams(window.location.search).get('coins') || '100'}`;
+    </script>
 </body>
 </html>
